@@ -1,0 +1,160 @@
+package Mauphan3;
+
+import java.util.*;
+
+public class bai2 {
+    ArrayList<Integer> a= new ArrayList<Integer>();
+    void input(){
+        Scanner kb = new Scanner(System.in);
+        int n;
+        do{
+            System.out.print("Nhap n>0: ");
+            n = kb.nextInt();
+        }while(n<=0);
+        for(int i=0;i<n;i++)
+            a.add((int)(int)(Math.random()*100));
+    }
+     void xuat(String nd){
+        System.out.print(nd);
+        for(int i=0;i<a.size();i++)
+            System.out.print(a.get(i)+" ");
+        System.out.println("");
+    }
+    //1. tim max
+     void TimMax(){
+            int max=a.get(0);
+            for(int i=1;i<a.size();i++)
+            if(a.get(i)>max)
+                max=a.get(i);
+        System.out.println("So lon nhat la " +max);
+        }
+     //2. tim max co gia tri lien tiep   
+        void maxLT(){
+            int so1 = 0,so2 = 0;
+            int tong=(a.get(0)+a.get(1));
+            for(int i=0;i<a.size()-1;i++)
+                if(tong<(a.get(i)+a.get(i+1))){
+                    tong=(a.get(i)+a.get(i+1));
+                    so1=a.get(i);so2=a.get(i+1);}
+                System.out.println("So thu nhat la : "+so1);
+                System.out.println("So thu hai la : "+so2);
+                System.out.println("Tong 2 so lien tiep lon nhat la : "+so1+"+"+so2+"="+(so1+so2));
+     
+        }
+    //3. tong 2 so lon nhat
+        int TongMax(){
+        int z = a.get(0) + a.get(1);
+        for(int i=1; i<a.size(); i++)
+            for(int j=1; j<a.size(); j++)
+                if (z<a.get(i)+a.get(j))
+                    z = a.get(i) + a.get(j);
+        System.out.println("Tong 2 phan tu lon nhat la :"+z);
+        return z;
+    }
+    //4. hieu max min
+         int timMax(){
+            int max=a.get(0);
+            for(int i=1;i<a.size();i++)
+            if(a.get(i)>max)
+                max=a.get(i);
+        System.out.println("So lon nhat la:" +max);
+        return max;
+        }
+        
+        int timMin(){
+            int min=a.get(0);
+            for(int i=1;i<a.size();i++)
+            if(a.get(i)<min)
+                min=a.get(i);
+        System.out.println("So nho nhat la:" +min);
+        return min;
+        }
+     //5. tong so nguyen to
+        boolean nguyenTo(int x){
+            int dem=0;
+            for(int i=1; i<=x; i++)
+                if(x%i==0) dem++;
+            return dem==2;
+        }
+        void tongNT(){
+            System.out.print("Tong so nguyen to");
+            int s=0;
+            for(int i=0; i<a.size(); i++)
+                if(nguyenTo(a.get(i))==true){
+                    System.out.print(a.get(i)+"+");
+                    s=s+a.get(i);
+                }
+            System.out.print("\b="+s);
+        }
+    //6.tong doi xung
+        int daoNguoc(int x){
+        int s=0;
+        while(x>0){
+            s=s*10+x%10;
+            x=x/10;
+        }
+        return s;
+    }
+        boolean doiXung(int x){
+            if(daoNguoc(x)==x)
+                return true;
+            return false;
+        }
+        void tongDX(){
+            System.out.print("\nTong cac so nguyen to=");
+            int s=0;
+            for(int i=0; i<a.size(); i++)
+                if(doiXung(a.get(i))==true){
+                    System.out.print(a.get(i)+"+");
+                    s=s+a.get(i);
+            }
+        System.out.println("\b="+s);
+        }
+    //7. kiem tra tinh khong giam
+        boolean khongGiam(){
+            for(int i=0; i<a.size()-1; i++)
+                if(a.get(i)>a.get(i+1))
+                    return false;
+            return true;
+        }
+    //8. sap xep tang
+        void sapXepTang(){
+            for(int i=0; i<a.size()-1; i++)
+                for(int j=i+1; j<a.size(); j++)
+                    if(a.get(i)>a.get(j)){
+                        int t=a.get(i);
+                        a.set(i,a.get(j));
+                        a.set(j,t);               
+        }
+    }
+    //9. loai tat ca x ra khoi mang
+        void xoaALL(int x){
+            while(a.contains(x))
+                a.remove((Integer)x);
+        }
+     void output(){
+        xuat("Mang vua tao: ");
+        int x = 0;
+        TimMax();
+        maxLT();
+        TongMax();
+        System.out.println("Hieu max min la:" +(timMax()- timMin()));
+        tongNT();
+        tongDX();  
+        System.out.println("Mang khong giam: "+khongGiam());
+        sapXepTang();
+        Scanner kb= new Scanner (System.in);
+        System.out.println("Gia tri can xoa:");
+        x=kb.nextInt();
+        xoaALL(x);
+        xuat("Mang vua xoa"+x+":");
+     }
+    public static void main(String []x){
+        bai2 a= new bai2();
+        a.input();
+        a.output();
+    }
+
+    
+}
+
