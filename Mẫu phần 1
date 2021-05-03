@@ -1,0 +1,344 @@
+bài 1
+
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class Ptbac1 {
+    double a,b;
+    void input(){
+        Scanner kb= new Scanner(System.in);
+        System.out.println("Tô Quang Phú");
+        System.out.println("Nhap he so a:");
+        a=kb.nextDouble();
+        System.out.println("Nhap he so b:");
+        b=kb.nextDouble();
+        System.out.println("Phương trình bạn vừa nhập vào là: " + a + "x + " + b + " = 0.");
+}
+    /*void output(){
+        if(a==0){
+            if(b==0){
+                System.out.println("phuong trinh vo so nghiem");
+        }else {
+                System.out.println("Phương trình vô nghiệm.");
+            }
+    }else{
+            System.out.println("Phuong trinh co 1 nghiem x="+(-b/a));
+}
+    }*/
+    void output(){
+        System.out.println(a+"x"+((b>=0)?"+":"")+b+"=0"+giai());
+    }
+    String giai(){
+        String s="";
+        s=(a==0)?((b==0)?"Vo so nghiem":"Vo nghiem"):("\nx="+-b/a);
+        return s;
+                
+    }
+    public static void main(String[] args) {
+       Ptbac1 a=new Ptbac1();
+       a.input();
+       a.output();
+    }
+}
+bài 2
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class Bptbac2 {
+    double a,b,c;
+    void input(){
+        Scanner kb=new Scanner(System.in);
+        do{
+            System.out.println("Nhap he so a:");
+            a=kb.nextDouble();
+        }while(a==0);
+        System.out.println("Nhap he so b:");
+        b=kb.nextDouble();
+        System.out.println("Nhap he so c:");
+        c=kb.nextDouble();
+        System.out.println("Phương trình bạn vừa nhập vào là: " + a + "x^2 + " + b + "x + "+ c+ " <= 0.");
+    }
+    void output(){
+        double delta=b*b-4*a*c;
+        if(delta<0){
+            if(a<0)
+            {
+                System.out.println("Co nghiem voi moi x");
+            }else
+                System.out.println("Phuong tirnh vo nghiem");
+        }
+        if(delta==0){
+            if(a>0) 
+                System.out.println("x1 = x2 = " + -b/(2*a));
+            else 
+                System.out.println("Vô số nghiệm");
+        }
+        else {
+            double x1 = (-b + Math.sqrt(delta))/2/a;
+            double x2 = (-b - Math.sqrt(delta))/2/a;
+            if(a>0)
+                if(x2>x1) System.out.println(x1 + " <= x <= " + x2);
+                else System.out.println(x2 + " <= x <= " + x1);
+            else
+                if(x2>x1) System.out.println("x < " + x1 + " && x > " + x2);              
+                else System.out.println("x < " + x2 + " && x > " + x1);
+    }
+    }
+    public static void main(String [] args){
+        Bptbac2 a=new Bptbac2();
+        a.input();
+        a.output();
+    
+    }
+}
+bài 3
+package cs311_d_mauphan1_toquangphu1;
+import java.util.Scanner;
+public class Ptbac4{
+    double a,b,c;
+    void input(){
+        Scanner kb = new Scanner(System.in);
+        System.out.println("Giai Ax^4 + Bx^2 + C = 0");
+        System.out.print("Nhap A<>0: ");a = kb.nextDouble();
+        System.out.print("Nhap B<>0: ");b = kb.nextDouble();
+        System.out.print("Nhap C<>0: ");c = kb.nextDouble();
+    }
+    void output(){
+        System.out.println(giai());
+    }
+    String giai(){
+        String s = null;
+        double d = b*b - 4*a*c;
+        if(d<=0) s = " Vo No";
+        if(d==0){
+            double t=-b/2/a;
+            if(t>0)s = "-"+Math.sqrt(t)+" "+Math.sqrt(t);
+            else s="Vo No";
+        }
+        if(d>0){
+            double t1 = (-b-Math.sqrt(d))/2/a;
+            double t2 = (-b+Math.sqrt(d))/2/a;
+            if(t1<0 && t2<0) s = "Vo No";
+            if(t1>0 && t2<0) s = "-"+Math.sqrt(t1)+" "+Math.sqrt(t1);
+            if(t1<0 && t2>0) s = "-"+Math.sqrt(t2)+" "+Math.sqrt(t2);
+            if(t1>0 && t2>0) s = "-"+Math.sqrt(t1)+" "+Math.sqrt(t1)+ " -"+Math.sqrt(t2)+ " "+Math.sqrt(t2);
+        }
+        return s;
+    }
+    public static void main(String []x){
+        Ptbac4 a = new Ptbac4();
+        a.input();
+        a.output();
+    }
+}
+bài 4
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class SvaP_hinhtron {
+    double r;
+    void input(){
+        Scanner kb=new Scanner(System.in);
+        System.out.println("Nhap he so r:");
+        r=kb.nextDouble();
+    }
+    void output(){
+        double s,p;
+        s=r * r * 3.14;
+        p=r * 2 * 3.14;
+        System.out.println("Diện tích hình tròn là: " + s);
+        System.out.println("Chu vi hình tròn là: "+ p);
+    }
+    public static void main(String[] args){
+        SvaP_hinhtron a=new SvaP_hinhtron();
+        a.input();
+        a.output();
+    }
+}
+bài 5
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class SvaP_hcn {
+    double a,b;
+    void input(){
+        Scanner kb=new Scanner(System.in);
+        System.out.println("Nhap chieu dai a:");
+        a=kb.nextDouble();
+        System.out.println("Nhap chieu rong b:");
+        b=kb.nextDouble();
+        
+    }
+    void output(){
+        double s,p;
+        s=a*b;
+        p=(a+b)/2;
+        System.out.println("chu vi hình chữ nhật là : " + s);
+        System.out.println("diện tích hình chữ nhật là : " + p);
+    }
+    public static void main(String [] args){
+        SvaP_hcn a=new SvaP_hcn();
+        a.input();
+        a.output();
+    }
+}
+bài 6
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class pheptoan {
+    double a,b;
+    char pt;
+    void input(){
+        Scanner kb=new Scanner(System.in);
+        System.out.println("Tô Quang Phú");
+        System.out.println("Nhap a:");
+        a=kb.nextDouble();
+        System.out.println("Nhap b;");
+        b=kb.nextDouble();
+        System.out.println("Nhap phep toan(+,-,*,/):");
+        pt=kb.next().charAt(0);
+        
+    }
+    void output(){
+        /*System.out.println("Tong="+a+"+"+b+"="+(a+b));
+        System.out.println("Hieu="+a+"-"+b+"="+(a-b));
+        System.out.println("Tich="+a+"*"+b+"="+a*b);*/
+        System.out.println("S = "+a+" / "+b+" = "+a/b);
+    }
+    /*void output(){
+        String s="";
+        s=" "+((pt=='+')?a+b:((pt=='-')?a-b((pt=='*')?a*b:a/b)));
+        System.out.println(a+" "+pt+" "+b+"="+s);
+    }*/
+    public static void main(String[] args){
+        pheptoan a=new pheptoan();
+        a.input();
+        a.output();
+    }
+}
+bài 7
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class pheptoanphanso {
+    int t1,m1,t2,m2,a,b;
+    char pt;
+    void input(){
+        Scanner kb=new Scanner(System.in);
+        System.out.println("Nhap phan so 1:");
+        System.out.print("\tTu: ");
+        t1=kb.nextInt();
+        do
+	{
+            System.out.print("\tMau:");
+            m1=kb.nextInt();
+            if(m1==0)
+                System.out.print("Nhap sai, yeu cau nhap lai mau so");
+	}while(m1==0);
+        System.out.println("Nhap phan so 2:");
+        System.out.print("\tTu: ");
+        t2=kb.nextInt();
+        do
+	{
+            System.out.print("\tMau:");
+            m2=kb.nextInt();
+            if(m2==0)
+                System.out.print("Nhap sai, yeu cau nhap lai mau so");
+	}while(m2==0);
+        do{
+            System.out.print("Nhap phep toan(+,-,*,/):");
+            pt=kb.next().charAt(0);
+	}while(pt!='+'&&pt!='-'&&pt!='*'&&pt!='/');
+    }
+    void output(){
+        switch(pt){
+		case'+':
+                    a=t1*m2+t2*m1;
+                    b=m1*m2;
+                
+		case'-':
+                    a=t1*m2-t2*m1;
+                    b=m1*m2;
+                
+		case'*':
+                    a=t1*t2;
+                    b=m1*m2;
+                
+		case'/':
+                    if(t2==0) System.out.println("\nKhong chia duoc");
+                    else{
+                        a=t1*m2;
+                        b=m1*t2;
+                    }
+                    System.out.println("("+t1+"/"+m1+")"+ pt +"("+t2+"/"+m2+")="+a+"pt"+b);
+        }
+	int a1,b1;
+	a1= Math.abs(a);
+	b1= Math.abs(b);
+	while(a1!=b1) {
+		if(a1>b1) a1=a1-b1;
+		else b1=b1-a1;
+		}
+	}
+    
+    public static void main(String[] x){
+        pheptoanphanso a=new pheptoanphanso();
+        a.input();
+        a.output();
+                
+    }
+}
+bài 8
+package cs311_d_mauphan1_toquangphu1;
+
+import java.util.Scanner;
+
+public class b8_cong2moctime {
+   int gio1, phut1, giay1, gio2, phut2, giay2;
+   int gio = gio1, phut = phut1, giay = giay1;
+   void input(){
+       Scanner sc = new Scanner(System.in);
+       System.out.println("Mốc 1: ");
+       System.out.print("\t Giờ: ");
+       gio1 = sc.nextInt();
+       System.out.print("\t Phút: ");
+       phut1 = sc.nextInt();
+       System.out.print("\t Giây: ");
+       giay1 = sc.nextInt();
+       System.out.println("Mốc 2: ");
+       System.out.print("\t Giờ: ");
+       gio2 = sc.nextInt();
+       System.out.print("\t Phút: ");
+       phut2 = sc.nextInt();
+       System.out.print("\t Giây: ");
+       giay2 = sc.nextInt();
+   }
+   void output(){
+       giay = giay1 + giay2;
+       phut = phut1 + phut2;
+       gio = gio1 + gio2;
+       if(giay>60){
+           phut = phut + 1;
+           giay = giay - 60;
+       }
+       if(phut>60){
+           gio = gio + 1;
+           phut = phut - 60;
+       }
+       System.out.print(gio + " giờ " + phut + " phút " + giay + " giây ");
+   }
+   public static void main(String[] args){
+       b8_cong2moctime a= new b8_cong2moctime();
+       a.input();
+       a.output();
+      
+   }
+}
+bài 9. KHÔNG BIẾT LÀM, LÀM HỘ NHÉ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
