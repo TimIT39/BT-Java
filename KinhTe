@@ -1,0 +1,87 @@
+package Lab;
+
+public class KinhTe {
+    private String maSv, hoTen;
+    private int namSinh;
+    private boolean gioiTinh;
+    private double nlkt, mkt;
+    public KinhTe(){
+        maSv = hoTen = null;
+        namSinh = 2000;
+        gioiTinh = true;
+        nlkt =mkt = 0;
+    }
+    public KinhTe(String maSv, String hoTen, int namSinh, boolean gioiTinh,double java, double css, double html){
+        this.maSv = maSv;
+        this.hoTen = hoTen;
+        this.namSinh = namSinh;
+        this.gioiTinh = gioiTinh;
+        this.nlkt = nlkt;
+        this.mkt = mkt;
+    }
+
+    public String getMaSv() {
+        return maSv;
+    }
+
+    public void setMaSv(String maSv) {
+        this.maSv = maSv;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+
+    public int getNamSinh() {
+        return namSinh;
+    }
+
+    public void setNamSinh(int namSinh) {
+        this.namSinh = namSinh;
+    }
+
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public double getnlkt() {
+        return nlkt;
+    }
+
+    public void setnlkt(double nlkt) {
+        this.nlkt = nlkt;
+    }
+
+    public double getmkt() {
+        return mkt;
+    }
+
+    public void setmkt(double mkt) {
+        this.mkt = mkt;
+    }
+
+    public double getDiemTB(){
+        return (nlkt*2 + mkt)/3;
+    }
+    public String getHocLuc(){
+        if(getDiemTB()<3.5) return "kem";
+        if(getDiemTB()<5) return "yeu";
+        if(getDiemTB()<6.5) return "trung binh";
+        if(getDiemTB()<8) return "kha";
+        if(getDiemTB()<9) return "gioi";
+        return "xuatsac";
+    }
+    public String toString(){
+        return maSv + " " +hoTen+" "+namSinh+" "+((gioiTinh)?" nam ":" nu ") + getDiemTB()+" "+getHocLuc();
+    }
+}
+
+
